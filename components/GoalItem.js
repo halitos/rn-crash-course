@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     marginVertical: 4,
     borderRadius: 8,
-    backgroundColor: '#eee',
+    backgroundColor: '#BFC9CA',
   },
   listText: {
     fontSize: 18,
