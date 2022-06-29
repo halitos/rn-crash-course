@@ -13,6 +13,13 @@ export default function App() {
       { text: goalText, key: Math.random().toString() },
     ]);
   };
+
+  const removeGoalHandler = (goalId) => {
+    setGoals((currentGoals) => {
+      return currentGoals.filter((goal) => goal.key !== goalId);
+    });
+  };
+
   return (
     <View style={styles.appContainer}>
       <GoalInput onAddGoal={addGoalHandler} />
@@ -20,7 +27,13 @@ export default function App() {
         <FlatList
           data={goals}
           alwaysBounceVertical={false}
-          renderItem={(itemData) => <GoalItem text={itemData.item.text} />}
+          renderItem={(itemData) => (
+            <GoalItem
+              text={itemData.item.text}
+              id={itemData.item.key}
+              onDeleteGoal={removeGoalHandler}
+            />
+          )}
         />
       </View>
     </View>
