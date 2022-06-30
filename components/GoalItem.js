@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function GoalItem(props) {
   const deleteGoal = () => {
@@ -16,7 +17,7 @@ export default function GoalItem(props) {
         onPress={deleteGoal}
       >
         <Text style={styles.listText}>{props.text}</Text>
-        {/* <Text>Delete</Text> */}
+        <Icon name='star' size={30} color='#900' />
       </Pressable>
     </View>
   );
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     marginVertical: 4,
     borderRadius: 8,
-    backgroundColor: '#BFC9CA',
+    backgroundColor: '#D3D9DC',
   },
   listText: {
     fontSize: 18,
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
   },
   item: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
 });

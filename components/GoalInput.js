@@ -27,7 +27,7 @@ const GoalInput = (props) => {
       <View style={styles.inputContainer}>
         <Image style={styles.image} color='black' source={goalImage} />
         <TextInput
-          placeholder='My Course Goal'
+          placeholder='New Task'
           placeholderTextColor='#565158'
           value={goalText}
           style={styles.textInput}
@@ -35,7 +35,7 @@ const GoalInput = (props) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.buttons}>
-            <Button title='Add Goal' color='#37895E' onPress={addGoalHandler} />
+            <Button title='Add' color='#37895E' onPress={addGoalHandler} />
           </View>
           <View style={styles.buttons}>
             <Button

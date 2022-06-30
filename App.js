@@ -1,5 +1,6 @@
+import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, View, FlatList, Button } from 'react-native';
+import { StyleSheet, View, FlatList, Button, Text } from 'react-native';
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
@@ -32,29 +33,40 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
-      <View style={{ marginVertical: 16 }}>
-        <Button title='Add New' onPress={displayGoalHandler} />
-      </View>
-      <GoalInput
-        onAddGoal={addGoalHandler}
-        visible={modalIsVisible}
-        hideGoalHandler={hideGoalHandler}
-      />
-      <View style={[styles.goalsContainer]}>
-        <FlatList
-          data={goals}
-          alwaysBounceVertical={false}
-          renderItem={(itemData) => (
-            <GoalItem
-              text={itemData.item.text}
-              id={itemData.item.key}
-              onDeleteGoal={removeGoalHandler}
-            />
-          )}
+    <>
+      <StatusBar style='auto' />
+      <View style={styles.appContainer}>
+        <View style={{ alignItems: 'center', marginVertical: 12 }}>
+          <Text>TO DO LIST</Text>
+        </View>
+        <View style={{ marginVertical: 16 }}>
+          <Button title='Add New' onPress={displayGoalHandler} />
+        </View>
+        {goals.length > 0 && (
+          <View style={{ alignItems: 'center', marginVertical: 12 }}>
+            <Text>List of Tasks</Text>
+          </View>
+        )}
+        <GoalInput
+          onAddGoal={addGoalHandler}
+          visible={modalIsVisible}
+          hideGoalHandler={hideGoalHandler}
         />
+        <View style={[styles.goalsContainer]}>
+          <FlatList
+            data={goals}
+            alwaysBounceVertical={false}
+            renderItem={(itemData) => (
+              <GoalItem
+                text={itemData.item.text}
+                id={itemData.item.key}
+                onDeleteGoal={removeGoalHandler}
+              />
+            )}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
